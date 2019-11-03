@@ -20,8 +20,6 @@
 		}
 	}
 
-	//hanzala
-
 		$div = 0;
 	$members_data = getMembersData("*");
 	$memberDataCount = count($members_data);
