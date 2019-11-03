@@ -1,11 +1,5 @@
 <?php
-
-$conn = new mysqli('localhost', 'hanzala', 'hanzu786', 'gym');
-
-if($conn->connect_error){
-	echo $conn->connect_error;
-}
-
+include "db_conn.php";
 /* get member data */
 
 function getMembersData($columns, $active = 1, $member_id = 0){
