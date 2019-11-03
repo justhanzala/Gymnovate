@@ -20,20 +20,9 @@
 		}
 	}
 
-	/*if (isset("search")) {
+	//hanzala
 
-
-
-		$name = $_POST["name"];
-		$mobile = $_POST["mobile"];
-		$doj = $_POST["doj"];
-		if ($name == "") {
-
-		}else{
-			getMembersData();
-		}
-	}*/
-	$div = 0;
+		$div = 0;
 	$members_data = getMembersData("*");
 	$memberDataCount = count($members_data);
 ?>
