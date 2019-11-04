@@ -1,3 +1,5 @@
+<?php
+$curr_file = basename($_SERVER["SCRIPT_FILENAME"]);  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +20,9 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				   		<div class="navbar-nav">
-				    	 	<a class="nav-item nav-link" href="addmembers.php">Add Member</a>
-				    		<a class="nav-item nav-link" href="fees_submit.php">Add Fees</a>
-				    		<a class="nav-item nav-link" href="trash.php">Trash</a>
+				    	 	<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
+				    		<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
+				    		<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">Trash</a>
 				     	</div>
 				  	</div>
 
