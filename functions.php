@@ -2,14 +2,18 @@
 include "db_conn.php";
 /* get member data */
 
-function getMembersData($columns, $active = 1, $member_id = 0){
+function getMembersData($columns, $active = 1, $member_id = 0, $search_param = ""){
 	global $conn;
 	$query = "SELECT ".$columns." FROM members WHERE active='".$active."' ";
-
-	if($member_id !== 0){
+	
+	if(!empty($member_id)){
 		$query = $query." AND member_id = '".$member_id."'";
 	}
-	
+
+	if(!empty($search_param)){
+		$query = $query." AND (member_id LIKE '%".$search_param."%' OR full_name LIKE '%".$search_param."%' OR mobile_number LIKE '%".$search_param."%') ";
+	}
+
 	$result = $conn->query($query);
 	$data = array();
 
@@ -28,6 +32,16 @@ function getMembersData($columns, $active = 1, $member_id = 0){
 }
 
 /* get member data end*/
+
+function getTotalFees(){
+	global $conn;
+	$query = "SELECT SUM(fees) FROM members_fee";
+
+	$sum = $conn->query($query);
+	$sum = $sum->fetch_assoc();
+
+	return $sum['SUM(fees)'];
+}
 
 /* get member fee */
 

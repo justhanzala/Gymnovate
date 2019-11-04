@@ -1,37 +1,22 @@
 <?php
-
 	include "functions.php";
-	$members_data = getMembersData("*", 1, $full_name);
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title></title>
-</head>
-<body>
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		 	<h2 class="navbar-brand">gymnovate</h2>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		   		<div class="navbar-nav">
-		    	 	<a class="nav-item nav-link" href="addmembers.php">add member</a>
-		    		<a class="nav-item nav-link" href="fees_submit.php">add fees</a>
-		    		<a class="nav-item nav-link" href="trash.php">trash peoples</a>
-		     	</div>
-		  	</div>
+	$search = $_POST['search'];
 
-		  	<form class="form-inline" method="POST" action="search.php">
-	  			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	    		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Search</button>
-	 		</form>
+	include "header.php";
 
-		</nav>
+	$members_data = getMembersData("*", 1, 0, $search);
+	$searchdata_count = count($members_data);
 
-			
-	</div>
-</body>
-</html>
+	for ($i=0; $i < $searchdata_count; $i++) { ?>
+		<div class="justify-content-center member-wrap p-4 rounded m-2">
+			<div class="float-right">
+				<a href="update_member.php?member_id=<?= $members_data['member_id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+				<a href="delete_member.php?member_id=<?= $members_data['member_id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+			</div>
+			<h2><?= $members_data[$i]['member_id'] ?>. <?= $members_data[$i]['full_name'] ?> </h2>
+			<p><?=  $members_data[$i]['mobile_number'] ?></p>
+			<p class="float-right"><?= $members_data[$i]['doj'] ?></p>
+    	</div><?php	
+    }
+	include "footer.php";
+		?>
