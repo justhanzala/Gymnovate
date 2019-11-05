@@ -10,8 +10,8 @@
 	for ($i=0; $i < $searchdata_count; $i++) { ?>
 		<div class="justify-content-center member-wrap p-4 rounded m-2">
 			<div class="float-right">
-				<a href="update_member.php?member_id=<?= $members_data['member_id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-				<a href="delete_member.php?member_id=<?= $members_data['member_id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+				<a href="update_member.php?member_id=<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+				<a href="delete_member.php?member_id=<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
 			</div>
 			<h2><?= $members_data[$i]['member_id'] ?>. <?= $members_data[$i]['full_name'] ?> </h2>
 			<p><?=  $members_data[$i]['mobile_number'] ?></p>
