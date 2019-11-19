@@ -1,6 +1,5 @@
 <?php
 include "db_conn.php";
-/* get member data */
 
 function getMembersData($columns, $active = 1, $member_id = 0, $search_param = ""){
 	global $conn;
@@ -25,13 +24,10 @@ function getMembersData($columns, $active = 1, $member_id = 0, $search_param = "
 			if(isset($row['mobile_number'])) $temp_arr['mobile_number'] = $row['mobile_number'];
 			if(isset($row['doj'])) $temp_arr['doj'] = $row['doj'];
 			$data[] = $temp_arr;
-
 		}
 	}
 	return $data;
 }
-
-/* get member data end*/
 
 function getTotalFees(){
 	global $conn;
@@ -43,14 +39,17 @@ function getTotalFees(){
 	return $sum['SUM(fees)'];
 }
 
-/* get member fee */
-
-function getMembersfeerecord(){
+function getMembersfeerecord($member_id = 0){
 	global $conn;
 
-	$feeresult = $conn->query("SELECT members.full_name, members_fee.* FROM members_fee, members WHERE members.member_id=members_fee.member_id");
+	$query = "SELECT members.full_name, members_fee.* FROM members_fee, members WHERE members.member_id=members_fee.member_id";
 	$feedata = array();
 
+	if(!empty($member_id)){
+		$query = $query." AND members_fee.member_id=".$member_id."";
+	}
+
+	$feeresult = $conn->query($query);
 
 	if($feeresult->num_rows > 0){
 		while($feerow = $feeresult->fetch_assoc()){
@@ -68,10 +67,6 @@ function getMembersfeerecord(){
 
 	return $feedata;
 }
-
-/* get member fee end */
-
-/* insert member */
 
 function insertdata($table, $columns, $values){
 	global $conn;
@@ -92,12 +87,7 @@ function insertdata($table, $columns, $values){
 	$insert = $conn->query($query);
 
 	return $insert;
-
 }
-
-/* insert member end */
-
-/* update member */
 
 function updatemember($table, $columns, $member_id){
 	global $conn;
@@ -121,10 +111,6 @@ function updatemember($table, $columns, $member_id){
 	return $query;
 }
 
-/* update member end */
-
-/* delete member */
-
 function deletemember($table, $member_id){
 	global $conn;
 
@@ -135,7 +121,19 @@ function deletemember($table, $member_id){
 	return $query;
 }
 
-/* delete member end */
+function GetUsersData($username, $Password){
+	global $conn;
 
+	$query = "SELECT * FROM users WHERE username='".$username."' AND password='".$Password."'";
+	// echo $query;
+	$ret = false;
+	$select = $conn->query($query);
+
+	if($select->num_rows === 1){
+		$ret = true;
+	}
+	
+	return $ret;
+}
 
 ?>
