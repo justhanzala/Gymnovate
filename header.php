@@ -33,7 +33,7 @@ $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 
 				<div class="text-right p-1">
 					<form action="logout.php">
-						<button type="submit" name="submit" class="btn btn-secondary">Logout</button>
+						<button type="submit" name="submit" class="btn btn-outline-secondary">Logout</button>
 					</form>
 				</div>
 			</div>
