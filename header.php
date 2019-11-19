@@ -27,11 +27,11 @@ $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 			?>
 			
 			<div class="member-wrap">
-				<div class="float-left">
+				<div class="float-left p-2">
 					Loged In As <?= $_SESSION['username'] ?>
 				</div>
 
-				<div class="text-right">
+				<div class="text-right p-1">
 					<form action="logout.php">
 						<button type="submit" name="submit" class="btn btn-secondary">Logout</button>
 					</form>
