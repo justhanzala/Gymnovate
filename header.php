@@ -15,7 +15,30 @@ $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 <body>
 	<div class="container"> 
 
-				<header>
+	<?php
+		if($curr_file !== 'login.php'){ 
+			session_start();
+
+			if(!isset($_SESSION['username'])){
+				header('location:login.php');
+	
+			}
+			
+			?>
+			
+			<div class="member-wrap">
+				<div class="float-left">
+					Loged In As <?= $_SESSION['username'] ?>
+				</div>
+
+				<div class="text-right">
+					<form action="logout.php">
+						<button type="submit" name="submit" class="btn btn-secondary">Logout</button>
+					</form>
+				</div>
+			</div>
+
+            <header>
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
 						<h2 class="navbar-brand gymnovate">Gymnovate</h2>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,5 +58,5 @@ $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 					</nav> 
 				</header>
 			<?php
-		
-?> 
+        }		
+?>
