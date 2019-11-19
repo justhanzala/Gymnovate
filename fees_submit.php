@@ -74,7 +74,7 @@
 				  	<input type="submit" name="submit" class="btn btn-outline-secondary rounded-0" value="Submit">
 				  </div>
 			</div>
-			<div class="ml-3 p-2 border">
+			<div class="ml-3 p-2 border bg-secondary text-white">
 				<span>Total Amount:</span>
 				<span>&#8377;<?= $SumFees ?></span>
 			</div>
@@ -85,6 +85,7 @@
 		</div><?php
 		for ($div=0; $div < $feerecord_count; $div++) { ?>
 			<div class="justify-content-center member-wrap p-4 rounded m-2">
+
 				<h4 class="float-right"><?= "Fee. ". $feerecord[$div]['fees'] ?></h4>
 				<h2><?= $feerecord[$div]['transaction_id'] ?>. <?= $feerecord[$div]['full_name'] ?> </h2>
 				<p><?=  $months_arr[$feerecord[$div]['month'] - 1] ?></p>
@@ -92,6 +93,7 @@
 				<p class="float-right"><?= $feerecord[$div]['date'] ?></p>
     		</div>
     		
-    		<?php } 
+			<?php 
+		}
     	include "footer.php";
     		?>
