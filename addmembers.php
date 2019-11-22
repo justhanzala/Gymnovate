@@ -56,6 +56,23 @@
 				<p class="float-right"><?= $members_data[$div]['doj'] ?></p>
     		</div>
 
-		<?php }
+		<?php 
+		} ?>
+
+		<script>
+			jQuery("#mobile").keyup(function(){
+			var numlength = jQuery(this).val().length;
+			console.log(numlength);
+
+			if(numlength == 10){
+				jQuery(this).removeClass('is-invalid').addClass('is-valid');
+			}
+			else{
+				jQuery(this).addClass('is-invalid');
+			}
+		});
+		</script>
+
+		<?php
 	include "footer.php";
 		?>
