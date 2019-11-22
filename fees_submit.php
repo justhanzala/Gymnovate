@@ -38,7 +38,7 @@
   		<form class="form-inline d-flex justify-content-center mt-4 mb-4" method="post">
 		    <div class="form-group">
 		      <select name="select_member" class="custom-select" id="select_member">
-	    		<option selected="">select memeber...</option>
+	    		<option value="">select memeber...</option>
 	    		<?php 
 	    			for ($i=0; $i < $memebersname_count; $i++) { ?>	
 	    				<option value="<?= $members[$i]['member_id'] ?>"><?= $members[$i]['full_name'] ?></option>
@@ -52,7 +52,7 @@
 		    </div>
 		    <div class="input-group">
 	  			<select class="custom-select" name="select_month" id="select_month">
-	  				<option>Select Month</option>
+	  				<option value="">Select Month</option>
 					<?php
 						for ($i=0; $i < count($months_arr); $i++) {
 							$m = $i + 1; ?>
@@ -62,7 +62,7 @@
 	  			?>
 	  			</select>
 	  			<select class="custom-select" name="select_year" id="select_year">
-	  				<option>Select year</option>
+	  				<option value="">Select year</option>
 					<?php
 						for ($i=2019; $i < 2035; $i++) { ?>	
 							<option><?= $i ?></option>

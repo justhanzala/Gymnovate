@@ -2,14 +2,18 @@
 	include "functions.php";
 	$message = array("text" => "", "status" => "");
 	$member_id = $_GET['member_id'];
-	$result = deletemember("members", $member_id);
-	if ($result) {			
+
+	$member_delete = deletemember("members", $member_id);
+	$member_fee_delete = deletemember("members_fee", $member_id);
+	
+	if ($member_delete && $member_fee_delete) {			
 			$message['text'] = "Member with ID '".$member_id."' successfully deleted";
 			$message['status'] = "alert-success";
 	}else{			
 			$message['text'] = $conn->error;
 			$message['status'] = "alert-danger";
 		}
+
 ?>
 <!DOCTYPE html>
 <html>

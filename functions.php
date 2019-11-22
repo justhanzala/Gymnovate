@@ -114,8 +114,8 @@ function updatemember($table, $columns, $member_id){
 function deletemember($table, $member_id){
 	global $conn;
 
-	$query = "DELETE FROM ".$table." WHERE member_id=' ".$member_id." '";
-
+	$query = "DELETE FROM ".$table." WHERE member_id='".$member_id."'";
+	// echo $query;
 	$query = $conn->query($query);
 
 	return $query;
