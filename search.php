@@ -14,7 +14,9 @@
 		$fees_count = count($fees_record); ?>
 		<div class="justify-content-center member-wrap p-4 rounded m-2">
 			<div class="float-right">
-				<a href="#" class="toggle-table" data-table="#table-<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-table" aria-hidden="true"></i></a>
+
+				<a class="toggle-table" data-table="#table-<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-table" aria-hidden="true"></i></a>
+
 				<a href="update_member.php?member_id=<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 				<a href="delete_member.php?member_id=<?= $members_data[$i]['member_id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
  			</div>
@@ -51,13 +53,7 @@
 		jQuery(".toggle-table").click(function(){
 			var tableId = jQuery(this).data('table');
 			jQuery(tableId).slideToggle()
-			// if(jQuery(tableId).hasClass('d-none')){
-			// 	jQuery(tableId).removeClass('d-none')
-			// } else{
-			// 	jQuery(tableId).addClass('d-none')
-			// }
 		});
 	</script><?php
 	include "footer.php";
 	?>
-	
