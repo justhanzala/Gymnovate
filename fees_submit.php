@@ -71,7 +71,7 @@
 	  			?>
 	  			</select>
 				  <div class="input-group-append">
-				  	<input type="submit" name="submit" class="btn btn-outline-secondary rounded-0" value="Submit">
+				  	<input type="submit" name="submit" id="submit-btn" class="btn btn-outline-secondary rounded-0" value="Submit">
 				  </div>
 			</div>
 			<div class="ml-3 p-2 border bg-secondary text-white">
@@ -83,6 +83,7 @@
 		<div class='col-md-12 text-center mt-1'>
 			<div class='alert <?= $message['status'] ?>'><?= $message['text']; ?></div>
 		</div><?php
+
 		for ($div=0; $div < $feerecord_count; $div++) { ?>
 			<div class="justify-content-center member-wrap p-4 rounded m-2">
 
@@ -94,6 +95,30 @@
     		</div>
     		
 			<?php 
-		}
+		} ?>
+
+		<script>
+			jQuery(document).ready(function(){
+
+				jQuery("#submit-btn").prop('disabled', true);
+				
+				jQuery("#select_member, #amount, #select_month, #select_year").change(function(){
+					var selectMemberLength = jQuery("#select_member").val().length
+					var amountLength = jQuery("#amount").val().length
+					var selectMonthLength = jQuery("#select_month").val().length
+					var selectYearLength = jQuery("#select_year").val().length
+
+					if(selectMemberLength < 1 || amountLength < 1 || selectMonthLength < 1 || selectYearLength < 1){
+						jQuery("#submit-btn").prop('disabled', true);
+					}else{
+						jQuery("#submit-btn").prop('disabled', false);
+					}
+				})
+
+
+			})
+		</script>
+
+		<?php
     	include "footer.php";
     		?>

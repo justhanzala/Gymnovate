@@ -35,9 +35,9 @@
 		      <input type="text" class="form-control rounded-0" id="mobile" placeholder="Enter Mobile Number" name="mobile">
 		    </div>
 		    <div class="input-group">
-				  <input type="date" class="form-control rounded-0" placeholder="Date" name="doj">
+				  <input type="date" class="form-control rounded-0" id="doj" placeholder="Date" name="doj">
 				  <div class="input-group-append">
-				  	<input type="submit" name="submit" class="btn btn-outline-secondary rounded-0" value="Submit">
+				  	<input type="submit" name="submit" id="submit-btn" class="btn btn-outline-secondary rounded-0" value="Submit">
 				  </div>
 			</div>
 		</form>
@@ -56,21 +56,34 @@
 				<p class="float-right"><?= $members_data[$div]['doj'] ?></p>
     		</div>
 
-		<?php 
-		} ?>
+			<?php 
+		} 	?>
 
 		<script>
-			jQuery("#mobile").keyup(function(){
-			var numlength = jQuery(this).val().length;
-			console.log(numlength);
+			jQuery(document).ready(function(){
 
-			if(numlength == 10){
-				jQuery(this).removeClass('is-invalid').addClass('is-valid');
-			}
-			else{
-				jQuery(this).addClass('is-invalid');
-			}
-		});
+				jQuery("#submit-btn").prop('disabled', true);
+
+				jQuery("#name, #mobile").keyup(function(){
+					var nameLength = jQuery("#name").val().length;
+					var mobileLength = jQuery("#mobile").val().length;
+					var dateLength = jQuery("#doj").val().length;
+
+					if(nameLength < 1 || mobileLength < 10 || mobileLength > 10 || dateLength < 1){
+						jQuery("#submit-btn").prop('disabled', true);
+					}else{
+						jQuery("#submit-btn").prop('disabled', false);
+					}
+
+					if(mobileLength == 10){
+						jQuery("#mobile").removeClass('is-invalid')
+					}
+					else{
+						jQuery("#mobile").addClass('is-invalid');
+					}
+				})
+
+			})
 		</script>
 
 		<?php
