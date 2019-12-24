@@ -84,14 +84,14 @@
 			<div class='alert <?= $message['status'] ?>'><?= $message['text']; ?></div>
 		</div><?php
 
-		for ($div=0; $div < $feerecord_count; $div++) { ?>
+		for ($r=0; $r < $feerecord_count; $r++) { ?>
 			<div class="justify-content-center member-wrap p-4 rounded m-2">
 
-				<h4 class="float-right"><?= "Fee. ". $feerecord[$div]['fees'] ?></h4>
-				<h2><?= $feerecord[$div]['transaction_id'] ?>. <?= $feerecord[$div]['full_name'] ?> </h2>
-				<p><?=  $months_arr[$feerecord[$div]['month'] - 1] ?></p>
-				<p><?=  $feerecord[$div]['year'] ?></p>
-				<p class="float-right"><?= $feerecord[$div]['date'] ?></p>
+				<h4 class="float-right"><?= "Fee. ". $feerecord[$r]['fees'] ?></h4>
+				<h2><?= $feerecord[$r]['transaction_id'] ?>. <?= $feerecord[$r]['full_name'] ?> </h2>
+				<p><?=  $months_arr[$feerecord[$r]['month'] - 1] ?></p>
+				<p><?=  $feerecord[$r]['year'] ?></p>
+				<p class="float-right"><?= $feerecord[$r]['date'] ?></p>
     		</div>
     		
 			<?php 
