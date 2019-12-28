@@ -3,8 +3,7 @@
 	$months_arr = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "december");
 	$members = getMembersData("full_name, member_id");
 	$memebersname_count = count($members);
-	$feerecord = getMembersfeerecord();
-	$feerecord_count = count($feerecord);
+	
 	$feedate = date('Y-m-d');
 	$message = array("text" => "", "status" => "");
 	$months = count($months_arr);
@@ -29,6 +28,8 @@
 			}
 		}
 	}
+	$feerecord = getMembersfeerecord();
+	$feerecord_count = count($feerecord);
 	include "header.php";
 ?>
 		<div class="col-12 text-center">

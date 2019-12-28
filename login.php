@@ -1,3 +1,6 @@
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
 <?php
 	include "functions.php";
 	include "header.php";
@@ -13,9 +16,15 @@
 			$_SESSION['username'] = $username;
 			header('location:index.php');
 		} else{ ?>
-			<div class='col-md-12 text-center mt-1'>
-				<div class='alert'>incorrect</div>
-			</div>
+			<script type="text/javascript">
+					Swal.fire({
+						position: 'top',
+						icon: 'error',
+						title: 'username or password was wrong!',
+						showConfirmButton: false,
+						timer: 1500
+					})
+			</script>
 
 			<?php
 		}
