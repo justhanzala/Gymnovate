@@ -7,7 +7,6 @@
 	$feedate = date('Y-m-d');
 	$message = array("text" => "", "status" => "");
 	$months = count($months_arr);
-	$SumFees = getTotalFees();
 
 	if (isset($_POST["submit"])) {
 		$select_member = $_POST["select_member"];
@@ -30,6 +29,7 @@
 	}
 	$feerecord = getMembersfeerecord();
 	$feerecord_count = count($feerecord);
+	$SumFees = getTotalFees();
 	include "header.php";
 ?>
 		<div class="col-12 text-center">
