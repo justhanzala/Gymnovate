@@ -1,5 +1,9 @@
 <?php
 $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
+if(isset($_POST["responsedata"])){
+	getSearchSuggestions();
+	exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,24 +43,58 @@ $curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 			</div>
 
             <header>
-					<nav class="navbar navbar-expand-lg navbar-light bg-light">
-						<h2 class="navbar-brand gymnovate">Gymnovate</h2>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-							<div class="navbar-nav">
-								<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
-								<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
-								<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">Trash</a>
-							</div>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<h2 class="navbar-brand gymnovate">Gymnovate</h2>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="navbar-nav">
+							<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
+							<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
+							<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">Trash</a>
 						</div>
-						<form class="form-inline" method="POST" action="search.php">
-							<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
-							<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" >Search</button>
+					</div>
+					<div class="autocomplete">
+						<form autocomplete="off" class="form-inline" method="POST" action="search.php">
+							<input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
+							<button class="btn btn-outline-secondary my-2 my-sm-0" id="submit" type="submit" >Search</button>
 						</form>
-					</nav> 
-				</header>
+						<div id="response" class="form-control response"></div>
+					</div>
+				</nav> 
+			</header>
 			<?php
-        }		
+		}
 ?>
+<script>
+	$(document).ready(function(){
+		$('#search').keyup(function(){
+			var searchTxt = $("#search").val();
+			if(searchTxt != ''){
+				$.ajax({
+					type:'POST',
+					data:{responsedata:searchTxt},
+					success:function(responsedata){
+						$('#response').fadeIn();
+						$('#response').html(responsedata);
+					}
+				});
+			}else{
+				$('#response').fadeOut();
+				$('#response').html("");
+			}
+				$(document).on('click', 'li', function(){
+					if($(this).text() != "Name not found"){
+						$('#search').val($(this).text());
+						$('#response').html('');
+						$("#submit").click();
+					}
+            	});
+				$("body").click(function(event){
+						$('#response').fadeOut();
+						$('#response').html("");
+				});
+		});
+	});
+</script>

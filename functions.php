@@ -135,5 +135,22 @@ function GetUsersData($username, $Password){
 	
 	return $ret;
 }
+function getSearchSuggestions(){
+	global $conn;
+	$searchText = $_POST["responsedata"];
+	$output = "";
+	$query = "SELECT full_name FROM members where full_name like '%".$searchText."%' AND active='1' order by full_name asc limit 5";
+	$result = $conn->query($query);
+	$output = '<ul class="list-unstyled">';
 
+	if($result->num_rows > 0){
+		while($row = $result->fetch_assoc()){
+			$output .= '<li><a href="#">'.$row["full_name"].'</a></li>';
+		}
+	}else{
+		$output .= '<li>Name not found</li>';
+	}
+	$output .= '</ul>';
+	echo $output;
+}
 ?>
