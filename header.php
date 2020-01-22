@@ -18,42 +18,28 @@ if(isset($_POST["responsedata"])){
 </head>
 <body>
 	<div class="container"> 
-
-	<?php
+		<?php
 		if($curr_file !== 'login.php'){ 
 			session_start();
-
 			if(!isset($_SESSION['username'])){
 				header('location:login.php');
-	
 			}
-			
 			?>
-			
-			<div class="member-wrap">
-				<div class="float-left p-2">
-					Loged In As <?= $_SESSION['username'] ?>
-				</div>
-
-				<div class="text-right p-1">
-					<form action="logout.php">
-						<button type="submit" name="submit" class="btn btn-outline-secondary">Logout</button>
-					</form>
-				</div>
-			</div>
-
             <header>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<h2 class="navbar-brand gymnovate">Gymnovate</h2>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-						<div class="navbar-nav">
+					<div class="dropdown">
+						<button id="dropbtn" class="dropbtn btn btn-outline-secondary my-2 my-sm-0 fa fa-bars"></button>
+						<div id="myDropdown" class="dropdown-content">
+							<h5 class="text-center loggedInName"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'] ?></h5>
+							<hr>
 							<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
 							<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
-							<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">Trash</a>
+							<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">trash</a>
+							<a href="logout.php">Logout</a>
 						</div>
+					</div>
+					<div class="gymManagement">
+						<a href="index.php"><h3 class="navbar-brand">Gym Management</h3></a>
 					</div>
 					<div class="autocomplete">
 						<form autocomplete="off" class="form-inline" method="POST" action="search.php">
@@ -69,6 +55,29 @@ if(isset($_POST["responsedata"])){
 ?>
 <script>
 	$(document).ready(function(){
+		$('#dropbtn').click(function(){
+			document.getElementById("myDropdown").classList.toggle("show");
+		});
+		window.onclick = function(event) {
+			if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
+				}
+			}
+		}
+
+		$(window).scroll(function(){
+			var navFixed = $('.navbar'),
+			scroll = $(window).scrollTop();
+			if (scroll >= 100) navFixed.addClass('fixedHeader');
+  			else navFixed.removeClass('fixedHeader');
+		});
+
 		$('#search').keyup(function(){
 			var searchTxt = $("#search").val();
 			if(searchTxt != ''){
