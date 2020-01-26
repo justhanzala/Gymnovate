@@ -11,7 +11,7 @@ if(isset($_POST["responsedata"])){
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="gym.css">
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	<title></title>
@@ -24,6 +24,7 @@ if(isset($_POST["responsedata"])){
 			if(!isset($_SESSION['username'])){
 				header('location:login.php');
 			}
+			$gymBanner = getBannerName();
 			?>
             <header>
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,11 +36,12 @@ if(isset($_POST["responsedata"])){
 							<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
 							<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
 							<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">trash</a>
+							<a href="Setting.php">Setting</a>
 							<a href="logout.php">Logout</a>
 						</div>
 					</div>
 					<div class="gymManagement">
-						<a href="index.php"><h3 class="navbar-brand">Gym Management</h3></a>
+						<a href="index.php"><h3 class="navbar-brand"><?= $gymBanner['Gym_name'] ?></h3></a>
 					</div>
 					<div class="autocomplete">
 						<form autocomplete="off" class="form-inline" method="POST" action="search.php">

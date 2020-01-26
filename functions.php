@@ -153,4 +153,54 @@ function getSearchSuggestions(){
 	$output .= '</ul>';
 	echo $output;
 }
+function getBannerName(){
+	global $conn;
+
+	$query = "SELECT Gym_name FROM gym_banner";
+	$result = $conn->query($query);
+
+	if($result->num_rows > 0){
+		while($row = $result->fetch_assoc()){
+			$gymName = $row;
+		}
+	}
+
+	return $gymName;
+}
+function changeBannerName(){
+	global $conn;
+	$changeName = $_POST["gymName"];
+	$query = "UPDATE gym_banner SET Gym_name='".$changeName."' WHERE Gym_id=1";
+	$result = $conn->query($query);
+
+	return $result;
+}
+function updateUsername(){
+	global $conn;
+	$username = $_POST["changeUsername"];
+	$query = "UPDATE users SET username='".$username."'";
+	$result = $conn->query($query);
+	
+	return $result;
+}
+function updatePassword(){
+	global $conn;
+	$changePassword = $_POST["changePassword"];
+	$query = "UPDATE users SET password='".$changePassword."'";
+	$result = $conn->query($query);
+	
+	return $result;
+}
+function getPassword(){
+	global $conn;
+	$currentPassword = $_POST["current-Password"];
+	$query = "SELECT * FROM users WHERE password='".$currentPassword."'";
+	$result = $conn->query($query);
+	$ret = false;
+	
+	if($result->num_rows === 1){
+		$ret = true;
+	}
+	return $ret;
+}
 ?>

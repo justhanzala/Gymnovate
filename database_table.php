@@ -8,6 +8,11 @@ $query1 = "CREATE TABLE IF NOT EXISTS users (
     password varchar(50)
 );";
 
+$query1 = "CREATE TABLE IF NOT EXISTS gym_banner (
+    Gym_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Gym_name varchar(50)
+);";
+
 $query2 = "CREATE TABLE IF NOT EXISTS members (
     member_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name varchar(50),

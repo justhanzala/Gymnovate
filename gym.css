@@ -120,3 +120,9 @@
 }
 .dropdown a:hover {background-color: #ddd;} 
 .show {display: block;}
+.general-option{
+	background-color: #f0f5f1;
+}
+.webkit{
+	text-align: -webkit-center;
+}

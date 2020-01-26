@@ -1,6 +1,3 @@
-<head>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-</head>
 <?php
 	include "functions.php";
 	include "header.php";
