@@ -33,9 +33,9 @@ if(isset($_POST["responsedata"])){
 						<div id="myDropdown" class="dropdown-content">
 							<h5 class="text-center loggedInName"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'] ?></h5>
 							<hr>
-							<a class="nav-item nav-link <?= $curr_file == 'addmembers.php' ? 'active' : '' ?>" href="addmembers.php">Add Member</a>
-							<a class="nav-item nav-link <?= $curr_file == 'fees_submit.php' ? 'active' : '' ?>" href="fees_submit.php">Add Fees</a>
-							<a class="nav-item nav-link <?= $curr_file == 'trash.php' ? 'active' : '' ?>" href="trash.php">trash</a>
+							<a href="addmembers.php">Add Member</a>
+							<a href="fees_submit.php">Add Fees</a>
+							<a href="trash.php">trash</a>
 							<a href="Setting.php">Setting</a>
 							<a href="logout.php">Logout</a>
 						</div>
