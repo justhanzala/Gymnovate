@@ -203,4 +203,13 @@ function getPassword(){
 	}
 	return $ret;
 }
+function insertuser(){
+	global $conn;
+	$createUsername = $_POST["create-username"];
+	$confirmPassword = $_POST["confirm-password"];
+	$query = "INSERT INTO users (username, password) VALUES ('".$createUsername."', '".$confirmPassword."')";
+	
+	$result = $conn->query($query);
+	return $result;
+}
 ?>
