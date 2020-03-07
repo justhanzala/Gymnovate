@@ -1,8 +1,9 @@
 <?php
 include "db_conn.php";
-
+$curr_file = basename($_SERVER["SCRIPT_FILENAME"]);
 function getMembersData($columns, $active = 1, $member_id = 0, $search_param = ""){
 	global $conn;
+	global $curr_file;
 	$query = "SELECT ".$columns." FROM members WHERE active='".$active."' ";
 	
 	if(!empty($member_id)){
@@ -13,6 +14,10 @@ function getMembersData($columns, $active = 1, $member_id = 0, $search_param = "
 		$query = $query." AND (member_id LIKE '%".$search_param."%' OR full_name LIKE '%".$search_param."%' OR mobile_number LIKE '%".$search_param."%') ";
 	}
 
+	if($curr_file == "month.php"){
+		$query = $query."AND member_id NOT IN (SELECT member_id FROM members_fee) OR member_id IN (SELECT Count(member_id) FROM members_fee WHERE member_id < now() - interval 30 DAY)";
+	}
+	
 	$result = $conn->query($query);
 	$data = array();
 
