@@ -32,7 +32,7 @@
 	$SumFees = getTotalFees();
 	include "header.php";
 ?>
-		<div class="col-12 text-center">
+		<div class="col-12 text-center memberFeeName">
       		<h1>Add Member Fees.</h1>
     	</div>
 
@@ -51,7 +51,7 @@
 		    <div class="form-group">
 		      <input type="text" class="form-control rounded-0" id="amount" placeholder="fee amount" name="amount">
 		    </div>
-		    <div class="input-group">
+		    <div class="input-group form-group">
 	  			<select class="custom-select" name="select_month" id="select_month">
 	  				<option value="">Select Month</option>
 					<?php
@@ -88,7 +88,7 @@
 		for ($r=0; $r < $feerecord_count; $r++) { ?>
 			<div class="justify-content-center member-wrap p-4 rounded m-2">
 
-				<h4 class="float-right"><?= "Fee. ". $feerecord[$r]['fees'] ?></h4>
+				<h4 class="float-right fees"><?= "Fee. ". $feerecord[$r]['fees'] ?></h4>
 				<h2><?= $feerecord[$r]['transaction_id'] ?>. <?= $feerecord[$r]['full_name'] ?> </h2>
 				<p><?=  $months_arr[$feerecord[$r]['month'] - 1] ?></p>
 				<p><?=  $feerecord[$r]['year'] ?></p>

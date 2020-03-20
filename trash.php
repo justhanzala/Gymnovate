@@ -4,7 +4,7 @@
 	$memberDataCount = count($members_data);
 	include "header.php";
 ?>
-	<div class="col-12 text-center">
+	<div class="col-12 trashMemberName text-center">
 		<h1> Trash </h1>
 	</div>
 	<?php

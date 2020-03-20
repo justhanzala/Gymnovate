@@ -83,7 +83,8 @@
 /* dropdown nav */
 .fixedHeader {
 	position: fixed;
-	width: 58.4%;
+	/* left: 21%;
+	right: 21%; */
 }
 .navbar{
 	justify-content: space-between;
@@ -119,7 +120,7 @@
 	display: block;
 }
 .dropdown a:hover {background-color: #ddd;} 
-.show {display: block;}
+.show {display: block!important;}
 .general-option{
 	background-color: #f0f5f1;
 }
@@ -146,4 +147,123 @@
     top: 55%;
     left: 0;
     z-index: 1;
+}
+.SearchIcon{
+	display: none;
+}
+
+/* media queries */
+
+/* desktops and laptops */
+
+/* tablets and ipads */
+
+/* mobile phones */
+@media (max-width: 768px){
+	/* header media query */
+	.gymManagement a .brand-name{
+		float: right;
+		font-size: 19px;
+	}
+	.gymManagement{
+		width: fit-content;
+	}
+	.form-responsive{
+		display: none;
+	}
+	.SearchIcon{
+		display: block;
+	}
+	.search{
+		position: relative;
+		display: inline-block;
+		width: 50px;
+	}
+	.dropdownSearchBar{
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		width: 220px;
+		overflow: auto;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 100;
+	}
+	.navbar{
+		margin-bottom: 15px;
+	}
+	/* header media query end */
+	/* add members */
+		.member-wrap{
+			font-size: 14px;
+		}
+		.member-wrap h2{
+			font-size: 20px;
+		}
+		.addMemberName h1{
+			font-size: 25px;
+		}
+	/* add members end */
+	/* members fee */
+	.member-wrap .fees{
+		font-size: 18px;
+	}
+	.memberFeeName h1{
+		font-size: 25px;
+	}
+	/* members fee end */
+	/* trash member */
+	.trashMemberName h1{
+		font-size: 25px;
+	}
+	/* trash member end */
+	/* month over */
+	.monthOverName h1{
+		font-size: 25px;
+	}
+	/* month over end */
+	/* setting */
+	.Gym-banner{
+		font-size: 25px;
+		margin-bottom: 17px;
+	}
+	.bannerRes{
+		display: inline-grid;
+	}
+	#gymName{
+		width: 100%!important;
+	}
+	.memberNamePass{
+		display: block!important;
+	}
+	.memberNamePass .uNameOption{
+		width: 100%!important;
+		float: none!important;
+		margin-bottom: 25px;
+	}
+	.memberNamePass .pWordOption{
+		width: 100%!important;
+		float: none!important;
+	}
+	.memberNamePass .uNameOption h3{
+		font-size: 25px;
+	}
+	.memberNamePass .pWordOption h3{
+		font-size: 25px;
+	}
+	/* setting end */
+}
+@media (max-width: 1200px){
+	/* header media query */
+	.gymManagement{
+		width: 55%;
+	}
+	/* header media query */
+}
+@media (max-width: 1000px){
+	/* header media query */
+	.gymManagement{
+		width: 40%;
+		font-size: ;
+	}
+	/* header media query */
 }

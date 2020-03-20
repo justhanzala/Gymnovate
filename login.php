@@ -27,7 +27,7 @@
 		}
 	}
 ?>
-	<div class="row d-flex align-item-center">
+	<div class="row m-auto d-flex align-item-center">
 
 		<div class="col-sm-9 col-md-7 col-lg-5 m-auto">
 			<div class="card card-signin my-5">

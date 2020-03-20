@@ -24,7 +24,7 @@
 	include "header.php";
 
 ?>		
-		<div class="col-12 text-center">
+		<div class="col-12 text-center addMemberName">
       		<h1>Add Gym Member.</h1>
     	</div>
 		<form class="form-inline d-flex justify-content-center mt-4 mb-4" method="post">

@@ -5,8 +5,8 @@ $members_data = getMembersData("*");
 $feerecord = getMembersfeerecord();
 $members_dataCount = count($members_data);
 ?>
-<div class="col-12 text-center">
-    <h1>Month Over.</h1>
+<div class="col-12 text-center monthOverName">
+    <h1>Month</h1>
 </div>
 <?php
 
