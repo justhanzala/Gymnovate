@@ -166,7 +166,7 @@
 		font-size: 19px;
 	}
 	.gymManagement{
-		width: fit-content;
+		width: fit-content!important;
 	}
 	.form-responsive{
 		display: none;
@@ -263,7 +263,6 @@
 	/* header media query */
 	.gymManagement{
 		width: 40%;
-		font-size: ;
 	}
 	/* header media query */
 }

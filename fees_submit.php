@@ -1,7 +1,14 @@
 <?php	
 	include "functions.php";
 	$months_arr = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "december");
-	$members = getMembersData("full_name, member_id");
+	$ref=@$_SERVER[HTTP_REFERER];
+	$refSame = "http://localhost/gym/month.php";
+	if($ref != $refSame){
+		$members = getMembersData("full_name, member_id");
+	}else{
+		$member_id = $_GET['member_id'];
+		$members = getMembersData("*", 1, $member_id);
+	}	
 	$memebersname_count = count($members);
 	
 	$feedate = date('Y-m-d');
@@ -39,13 +46,20 @@
   		<form class="form-inline d-flex justify-content-center mt-4 mb-4" method="post">
 		    <div class="form-group">
 		      <select name="select_member" class="custom-select" id="select_member">
-	    		<option value="">select memeber...</option>
-	    		<?php 
-	    			for ($i=0; $i < $memebersname_count; $i++) { ?>	
-	    				<option value="<?= $members[$i]['member_id'] ?>"><?= $members[$i]['full_name'] ?></option>
-	    				<?php
-	    			}
-	    		?>
+			  <?php
+				if($ref != $refSame){?>
+					<option value="">select memeber...</option>
+					<?php 
+						for ($i=0; $i < $memebersname_count; $i++) { ?>	
+							<option value="<?= $members[$i]['member_id'] ?>"><?= $members[$i]['full_name'] ?></option>
+							<?php
+						}
+				}else{
+					?>
+					<option value="<?= $members[0]['member_id'] ?>"><?= $members[0]['full_name'] ?></option>
+					<?php
+				}
+				?>
 	    	  </select>
 		    </div>
 		    <div class="form-group">
