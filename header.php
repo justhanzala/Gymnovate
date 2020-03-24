@@ -49,10 +49,10 @@ if(isset($_POST["responsedata"])){
 						<button id="SearchIcon" class="SearchIcon btn btn-outline-secondary my-2 my-sm-0 fa fa-search"></button>
 						<div id="searchDropdown" class="autocomplete form-responsive dropdownSearchBar">
 							<form autocomplete="off" class="form-inline" method="POST" action="search.php">
-								<input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
+								<input class="form-control mr-sm-2 w-auto" type="search" name="search" id="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
 								<button class="btn btn-outline-secondary my-2 my-sm-0" id="submit" type="submit" >Search</button>
 							</form>
-							<div id="response" class="form-control response"></div>
+							<div id="response" class="pFixed form-control response"></div>
 						</div>
 					</div>
 				</nav>
