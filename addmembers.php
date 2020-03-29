@@ -21,6 +21,7 @@
 	}
 	$members_data = getMembersData("*");
 	$memberDataCount = count($members_data);
+	$countMembers = getTotalMembers();
 	include "header.php";
 
 ?>		
@@ -34,11 +35,15 @@
 		    <div class="form-group">
 		      <input type="text" class="form-control rounded-0" id="mobile" placeholder="Enter Mobile Number" name="mobile">
 		    </div>
-		    <div class="input-group">
+		    <div class="input-group form-group">
 				  <input type="date" class="form-control rounded-0" id="doj" placeholder="Date" name="doj">
 				  <div class="input-group-append">
 				  	<input type="submit" name="submit" id="submit-btn" class="btn btn-outline-secondary rounded-0" value="Submit">
 				  </div>
+			</div>
+			<div class="ml-3 p-2 border bg-secondary text-white">
+				<span>Active Members:</span>
+				<span class="fa fa-user"> <?= $countMembers ?></span>
 			</div>
 		</form>
 		<div class='col-md-12 text-center mt-1'>

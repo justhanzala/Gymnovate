@@ -44,6 +44,16 @@ function getTotalFees(){
 	return $sum['SUM(fees)'];
 }
 
+function getTotalMembers(){
+	global $conn;
+	$sql = "SELECT COUNT(member_id) FROM members WHERE active='1'";
+	$result = $conn->query($sql);
+
+	$result = $result->fetch_assoc();
+	
+	return $result['COUNT(member_id)'];
+}
+
 function getMembersfeerecord($member_id = 0){
 	global $conn;
 
