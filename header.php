@@ -19,45 +19,47 @@ if(isset($_POST["responsedata"])){
 <body>
 	<div class="container p-0"> 
 		<?php
-		if($curr_file !== 'login.php'){ 
-			session_start();
-			if(!isset($_SESSION['username'])){
-				header('location:login.php');
+		if($curr_file !== 'login.php'){
+			if($curr_file !== 'signup.php'){ 
+				session_start();
+				if(!isset($_SESSION['username'])){
+					header('location:login.php');
+				}
+				$gymBanner = getBannerName();
+				?>
+				<header>
+					<nav class="container navbar navbar-expand-lg navbar-light bg-light">
+						<div class="dropdown">
+							<button id="dropbtn" class="dropbtn btn btn-outline-secondary my-2 my-sm-0 fa fa-bars"></button>
+							<div id="myDropdown" class="dropdown-content">
+								<h5 class="text-center loggedInName"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'] ?></h5>
+								<hr>
+								<a href="addmembers.php">Add Member</a>
+								<a href="fees_submit.php">Add Fees</a>
+								<a href="month.php">Month</a>
+								<a href="trash.php">trash</a>
+								<a href="create_user.php">Create User</a>
+								<a href="Setting.php">Setting</a>
+								<a href="logout.php">Logout</a>
+							</div>
+						</div>
+						<div class="gymManagement">
+							<a href="index.php"><h3 class="navbar-brand brand-name"><?= $gymBanner['Gym_name'] ?></h3></a>
+						</div>
+						<div class="Search">
+							<button id="SearchIcon" class="SearchIcon btn btn-outline-secondary my-2 my-sm-0 fa fa-search"></button>
+							<div id="searchDropdown" class="autocomplete form-responsive dropdownSearchBar">
+								<form autocomplete="off" class="form-inline" method="POST" action="search.php">
+									<input class="form-control mr-sm-2 w-auto" type="search" name="search" id="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
+									<button class="btn btn-outline-secondary my-2 my-sm-0" id="submit" type="submit" >Search</button>
+								</form>
+								<div id="response" class="pFixed form-control response"></div>
+							</div>
+						</div>
+					</nav>
+				</header>
+				<?php
 			}
-			$gymBanner = getBannerName();
-			?>
-            <header>
-				<nav class="container navbar navbar-expand-lg navbar-light bg-light">
-					<div class="dropdown">
-						<button id="dropbtn" class="dropbtn btn btn-outline-secondary my-2 my-sm-0 fa fa-bars"></button>
-						<div id="myDropdown" class="dropdown-content">
-							<h5 class="text-center loggedInName"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'] ?></h5>
-							<hr>
-							<a href="addmembers.php">Add Member</a>
-							<a href="fees_submit.php">Add Fees</a>
-							<a href="month.php">Month</a>
-							<a href="trash.php">trash</a>
-							<a href="create_user.php">Create User</a>
-							<a href="Setting.php">Setting</a>
-							<a href="logout.php">Logout</a>
-						</div>
-					</div>
-					<div class="gymManagement">
-						<a href="index.php"><h3 class="navbar-brand brand-name"><?= $gymBanner['Gym_name'] ?></h3></a>
-					</div>
-					<div class="Search">
-						<button id="SearchIcon" class="SearchIcon btn btn-outline-secondary my-2 my-sm-0 fa fa-search"></button>
-						<div id="searchDropdown" class="autocomplete form-responsive dropdownSearchBar">
-							<form autocomplete="off" class="form-inline" method="POST" action="search.php">
-								<input class="form-control mr-sm-2 w-auto" type="search" name="search" id="search" placeholder="Search" value="<?php if(!empty($_POST['search'])) echo $_POST['search'] ?>" aria-label="Search">
-								<button class="btn btn-outline-secondary my-2 my-sm-0" id="submit" type="submit" >Search</button>
-							</form>
-							<div id="response" class="pFixed form-control response"></div>
-						</div>
-					</div>
-				</nav>
-			</header>
-			<?php
 		}
 ?>
 <script>

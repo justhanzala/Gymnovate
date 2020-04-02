@@ -23,7 +23,19 @@
 	$memberDataCount = count($members_data);
 	$countMembers = getTotalMembers();
 	include "header.php";
-
+	$ref=@$_SERVER[HTTP_REFERER];
+	if($ref == "http://localhost/gym/Signup.php"){
+		?>
+            <script type="text/javascript">
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Your account successfully created!',
+                    showConfirmButton: true
+                });
+            </script>
+            <?php
+	}
 ?>		
 		<div class="col-12 text-center addMemberName">
       		<h1>Add Gym Member.</h1>
