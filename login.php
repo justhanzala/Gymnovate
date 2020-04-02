@@ -50,6 +50,7 @@
 
 						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="submit">Login</button>
 						<hr class="my-4">
+						<p class="text-center">Don't have an account? <a href="signup.php">sign Up</a> </p>
 					</form>
 
 				</div>
