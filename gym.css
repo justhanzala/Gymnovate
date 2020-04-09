@@ -199,6 +199,14 @@
 		width: auto!important;
 	}
 	/* header media query end */
+	/* membership query */
+	.member-wrap .membershipPlan{
+		font-size: 20px;
+	}
+	.pageName h1{
+		font-size: 25px;
+	}
+	/* membership query end */
 	/* add members */
 		.member-wrap{
 			font-size: 14px;

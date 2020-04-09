@@ -38,6 +38,7 @@ if(isset($_POST["responsedata"])){
 								<a href="fees_submit.php">Add Fees</a>
 								<a href="month.php">Month</a>
 								<a href="trash.php">trash</a>
+								<a href="membership.php">Membership</a>
 								<a href="create_user.php">Create User</a>
 								<a href="Setting.php">Setting</a>
 								<a href="logout.php">Logout</a>

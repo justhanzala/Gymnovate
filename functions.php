@@ -75,7 +75,8 @@ function getMembersfeerecord($member_id = 0){
 				"fees" => $feerow['fees'],
 				"month" => $feerow['month'],
 				"year" => $feerow['year'],
-				"full_name" => $feerow['full_name']
+				"full_name" => $feerow['full_name'],
+				"membership" => $feerow['membership']
 			);
 		}
 	}

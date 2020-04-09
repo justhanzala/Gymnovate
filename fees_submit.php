@@ -99,17 +99,18 @@
 			<div class='alert <?= $message['status'] ?>'><?= $message['text']; ?></div>
 		</div><?php
 
-		for ($r=0; $r < $feerecord_count; $r++) { ?>
-			<div class="justify-content-center member-wrap p-4 rounded m-2">
+		for ($r=0; $r < $feerecord_count; $r++) { 
+			if(empty($feerecord[$r]["membership"])){ ?>
+				<div class="justify-content-center member-wrap p-4 rounded m-2">
 
-				<h4 class="float-right fees"><?= "Fee. ". $feerecord[$r]['fees'] ?></h4>
-				<h2><?= $feerecord[$r]['transaction_id'] ?>. <?= $feerecord[$r]['full_name'] ?> </h2>
-				<p><?=  $months_arr[$feerecord[$r]['month'] - 1] ?></p>
-				<p><?=  $feerecord[$r]['year'] ?></p>
-				<p class="float-right"><?= $feerecord[$r]['date'] ?></p>
-    		</div>
-    		
-			<?php 
+					<h4 class="float-right fees"><?= "Fee. ". $feerecord[$r]['fees'] ?></h4>
+					<h2><?= $feerecord[$r]['transaction_id'] ?>. <?= $feerecord[$r]['full_name'] ?> </h2>
+					<p><?=  $months_arr[$feerecord[$r]['month'] - 1] ?></p>
+					<p><?=  $feerecord[$r]['year'] ?></p>
+					<p class="float-right"><?= $feerecord[$r]['date'] ?></p>
+				</div>
+				<?php
+			}
 		} ?>
 
 		<script>
